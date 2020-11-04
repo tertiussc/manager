@@ -8,6 +8,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+defaultAppCode.txt
 
 # macOS
 .DS_Store
