@@ -17,15 +17,16 @@ class App extends Component {
       appId: '1:285761323821:web:8c4d6f19383ef9129749a4',
       measurementId: 'G-EJ9BJS2MM4'
     };
-
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps) {
+      firebase.initializeApp(firebaseConfig);
+    }
   }
 
   render() {
     return (
       <Provider store={createStore(reducers)}>
         <View style={{ flex: 1 }}>
-          <Text style={{ marginTop: 20 }}>Hello!</Text>
+          <Text style={{ marginTop: 20, fontSize: 20 }}>Hello!</Text>
         </View>
       </Provider>
     )
