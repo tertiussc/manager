@@ -20,7 +20,7 @@ class App extends Component {
       appId: '1:285761323821:web:8c4d6f19383ef9129749a4',
       measurementId: 'G-EJ9BJS2MM4'
     };
-    if (!firebase.apps) {
+    if (firebase.apps.length === 0) {
       firebase.initializeApp(firebaseConfig);
     }
   }
