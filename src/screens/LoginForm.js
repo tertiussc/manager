@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
 import { emailChanged, passwordChanged, loginUser } from '../actions'
 import { Card, CardSection, Input, Button, Spinner } from '../components/common'
@@ -43,33 +43,31 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}>
-                <Card>
-                    <CardSection>
-                        <Input
-                            label="Email"
-                            placeholder="user@email.com"
-                            onChangeText={this.onEmailChange.bind(this)}
-                            value={this.props.email}
-                        />
-                    </CardSection>
-                    <CardSection>
-                        <Input
-                            secureTextEntry
-                            label="password"
-                            placeholder="password"
-                            onChangeText={this.onPasswordChange.bind(this)}
-                            value={this.props.password}
-                        />
-                    </CardSection>
+            <Card>
+                <CardSection>
+                    <Input
+                        label="Email"
+                        placeholder="user@email.com"
+                        onChangeText={this.onEmailChange.bind(this)}
+                        value={this.props.email}
+                    />
+                </CardSection>
+                <CardSection>
+                    <Input
+                        secureTextEntry
+                        label="password"
+                        placeholder="password"
+                        onChangeText={this.onPasswordChange.bind(this)}
+                        value={this.props.password}
+                    />
+                </CardSection>
 
-                    {this.renderError()}
+                {this.renderError()}
 
-                    <CardSection>
-                        {this.renderButton()}
-                    </CardSection>
-                </Card>
-            </SafeAreaView>
+                <CardSection>
+                    {this.renderButton()}
+                </CardSection>
+            </Card>
         );
     }
 }
