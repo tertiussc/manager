@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, ListItem, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
 import { employeeFetch } from '../actions/EmployeeActions'
+import { CardSection } from './common'
 
 class EmployeeList extends Component {
     componentDidMount() {
@@ -20,7 +21,11 @@ class EmployeeList extends Component {
         return (
             <FlatList
                 data={employeeArr}
-                renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
+                renderItem={({ item }) =>
+                    <CardSection>
+                        <Text style={styles.item}>{item.name}</Text>
+                    </CardSection>
+                }
             />
         )
     }
