@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux'
+import { View, Text, FlatList, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
 import { employeeFetch } from '../actions/EmployeeActions'
 import { CardSection } from './common'
 
 class EmployeeList extends Component {
+    onRowPress() {
+        // the issue is on this.props.employee <- it is undefined, if i use employees 
+        // then i get the whole employees object back
+        Actions.employeeCreate({ employee: this.props.employee })
+    }
+
     componentDidMount() {
         this.props.employeeFetch();
     }
@@ -22,9 +29,13 @@ class EmployeeList extends Component {
             <FlatList
                 data={employeeArr}
                 renderItem={({ item }) =>
-                    <CardSection>
-                        <Text style={styles.item}>{item.name}</Text>
-                    </CardSection>
+                    <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+                        <View>
+                            <CardSection>
+                                <Text style={styles.item}>{item.name}</Text>
+                            </CardSection>
+                        </View>
+                    </TouchableWithoutFeedback>
                 }
             />
         )
